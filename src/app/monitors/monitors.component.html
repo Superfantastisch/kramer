@@ -1,0 +1,7 @@
+<h1>Monitors</h1>
+<section class="monitors-list" *ngIf="monitors$ | async as monitors">
+  <ng-container *ngFor="let item of monitors">
+    <div>{{ item | json }}</div>
+    <!-- <app-monitor-item [monitor]="item"></app-monitor-item> -->
+  </ng-container>
+</section>
