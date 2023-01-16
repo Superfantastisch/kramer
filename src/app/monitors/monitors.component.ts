@@ -12,7 +12,7 @@ import { MonitorService } from '../monitor.service';
 })
 export class MonitorsComponent implements OnInit {
   public monitors$!: Observable<Monitor[]>;
-  public filterByVar = ''
+  public filterByVar = '';
   public filterVar = new FormControl('');
 
   constructor(private _monitors: MonitorService) {
