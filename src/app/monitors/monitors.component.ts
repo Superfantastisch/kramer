@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { filter, map, Observable } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Monitor } from '../models/monitor.i';
 import { MonitorService } from '../monitor.service';
 
@@ -11,14 +12,16 @@ import { MonitorService } from '../monitor.service';
 })
 export class MonitorsComponent implements OnInit {
   public monitors$!: Observable<Monitor[]>;
-  private filterVar: string = '';
+  public filterByVar = ''
+  public filterVar = new FormControl('');
 
   constructor(private _monitors: MonitorService) {
   }
 
   ngOnInit(): void {
-    this.monitors$ = this._monitors.getAllMonitors().pipe(
-      map(val => val.filter(val => val.Name.includes(this.filterVar)))
-    )
+    this.monitors$ = this._monitors.getAllMonitors();
+    this.filterVar.valueChanges.subscribe(val => {
+      this.filterByVar = val || '';
+    })
   }
 }

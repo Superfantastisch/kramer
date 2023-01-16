@@ -5,17 +5,21 @@ import { AppComponent } from './app.component';
 import { MonitorsComponent } from './monitors/monitors.component';
 import { MonitorItemComponent } from './monitor-item/monitor-item.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormControl, FormsModule, NgModel } from '@angular/forms';
+import { MonitorfilterPipe } from './monitorfilter.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MonitorsComponent,
-    MonitorItemComponent
+    MonitorItemComponent,
+    MonitorfilterPipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

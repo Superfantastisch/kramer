@@ -1,7 +1,10 @@
 <h1>Monitors</h1>
-<input type="search">
+<section>
+    <label for="monitor-filter">Search for Monitor: </label>
+    <input  type="search" [formControl]="filterVar" />
+</section>
 <section class="monitors-list" *ngIf="monitors$ | async as monitors">
-  <div *ngFor="let item of monitors">
+  <div *ngFor="let item of monitors | monitorfilter:filterByVar">
     <app-monitor-item [monitor]="item"></app-monitor-item>
   </div>
 </section>
