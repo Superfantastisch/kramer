@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { Monitor } from '../models/monitor.i';
 import { MonitorService } from '../monitor.service';
 
@@ -10,12 +10,15 @@ import { MonitorService } from '../monitor.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MonitorsComponent implements OnInit {
-  public monitors$: Observable<Monitor[]> = of([]);
+  public monitors$!: Observable<Monitor[]>;
+  private filterVar: string = '';
 
   constructor(private _monitors: MonitorService) {
   }
 
   ngOnInit(): void {
-    this.monitors$ = this._monitors.getAllMonitors();
+    this.monitors$ = this._monitors.getAllMonitors().pipe(
+      map(val => val.filter(val => val.Name.includes(this.filterVar)))
+    )
   }
 }

@@ -1,7 +1,7 @@
 <h1>Monitors</h1>
+<input type="search">
 <section class="monitors-list" *ngIf="monitors$ | async as monitors">
-  <ng-container *ngFor="let item of monitors">
-    <div>{{ item | json }}</div>
-    <!-- <app-monitor-item [monitor]="item"></app-monitor-item> -->
-  </ng-container>
+  <div *ngFor="let item of monitors">
+    <app-monitor-item [monitor]="item"></app-monitor-item>
+  </div>
 </section>

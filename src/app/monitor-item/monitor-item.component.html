@@ -1,1 +1,9 @@
-<p>monitor-item works!</p>
+<article *ngIf="monitor" [ngClass]="{'selected': isSelected}" (click)="selectMonitor()">
+  <header class="m-header" [ngClass]="{'disabled': !monitor.status}">
+    {{monitor.Name}}
+  </header>
+  <section>
+    <div>{{ monitor.NativeResolution }}</div>
+    <div>{{ monitor.Size }}</div>
+  </section>
+</article>

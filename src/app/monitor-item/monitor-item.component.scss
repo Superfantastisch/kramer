@@ -1,0 +1,25 @@
+article {
+  width: 110px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+article.selected {
+  border: 5px solid darkgray;
+}
+
+.m-header {
+  background-color: green;
+  color: white;
+}
+.m-header.disabled {
+  background-color: gray;
+}
+
+@media screen and (min-width: 600px) {
+  article {
+    width: 320px;
+  }
+}
+
+
